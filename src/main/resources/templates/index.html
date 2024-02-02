@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spring Boot Tutorial</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h2>Login</h2>
-<form action="/login" method="post">
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username"/>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password"/>
-    </div>
-    <input type="submit" value="Login"/>
-</form>
+<ul class="nav-links">
+    <li sec:authorize="hasRole('USER')" class="nav-item"><a href="/public-data">User</a></li>
+    <li sec:authorize="hasRole('ADMIN')" class="nav-item"><a href="/private-data">Admin</a></li>
+    <li sec:authorize="!isAuthenticated()" class="nav-item"><a href="/login">Login</a></li>
+    <li sec:authorize="isAuthenticated()" class="nav-item">
+        <form class="link" th:action="@{/logout}" method="post">
+            <input class="link" type="submit" value="Logout"/>
+        </form></li>
+</ul>
+
+</div>
 </body>
 </html>
