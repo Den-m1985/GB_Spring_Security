@@ -26,3 +26,6 @@
    .withUser("admin").password("{noop}password").roles("ADMIN");
 
 https://github.com/spring-projects
+
+https://github.com/Evgen986/Java_Spring_Seminar_7_HW_task_2.git
+https://github.com/Evgen986/OAuth2-service-with-db.git
