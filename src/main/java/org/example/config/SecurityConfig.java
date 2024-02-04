@@ -25,10 +25,21 @@ public class SecurityConfig{
 				.authorizeHttpRequests((authorize) -> authorize
 						.requestMatchers("/index").permitAll()
 						.anyRequest().authenticated()
-				);
-//				.formLogin(login -> login
-//						.defaultSuccessUrl("/login").permitAll())
-//				.logout(logout -> logout.logoutSuccessUrl("/logout"));
+				)
+//				.formLogin()
+//				.loginPage("/login").permitAll()
+//				.loginProcessingUrl("/sing-in")
+//				.defaultSuccessUrl("public-data")
+//				.failureUrl("/login?error")
+//				.and()
+//				.logout()
+//				.logoutSuccessUrl("/")
+//				.and()
+//				.exceptionHandling()
+//				.accessDeniedPage("/acces-denied")
+				.formLogin(login -> login
+						.loginProcessingUrl("/login").permitAll())
+				.logout(logout -> logout.logoutSuccessUrl("/logout"));
 		return http.build();
 	}
 
